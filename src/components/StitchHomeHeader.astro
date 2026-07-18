@@ -21,14 +21,14 @@ const links = [
       </nav>
     </div>
     <div class="flex shrink-0 items-center gap-4">
-      <a class="line-shadow hidden min-h-11 items-center gap-2 rounded-lg bg-line px-5 py-2.5 text-sm font-bold leading-tight text-white sm:flex" href={site.line.url} target="_blank" rel="noopener noreferrer"><Icon name="chat" />แอด LINE ปรึกษาเรา</a>
+      <a class="line-shadow hidden min-h-11 items-center gap-2 rounded-lg bg-line px-5 py-2.5 text-sm font-bold leading-tight text-[#07391c] sm:flex" href={site.line.url} target="_blank" rel="noopener noreferrer"><Icon name="chat" />แอด LINE ปรึกษาเรา</a>
       <button class="grid size-11 place-items-center rounded-lg border border-outline-soft bg-white md:hidden" type="button" data-home-menu-toggle aria-controls="stitch-home-menu" aria-expanded="false" aria-label="เปิดเมนู"><Icon name="menu" /></button>
     </div>
   </div>
   <div class="hidden border-t border-surface-highest bg-white md:hidden" id="stitch-home-menu" data-home-menu>
     <nav class="container-site grid gap-1 py-4" aria-label="เมนูมือถือหน้าแรก">
       {links.map(([href, label]) => <a class="min-h-11 rounded-lg px-3 py-2 text-muted hover:bg-surface-low hover:text-primary" href={href}>{label}</a>)}
-      <a class="mt-2 flex min-h-11 items-center justify-center gap-2 rounded-lg bg-line px-4 py-2 font-bold text-white" href={site.line.url} target="_blank" rel="noopener noreferrer"><Icon name="chat" />{site.line.label}</a>
+      <a class="mt-2 flex min-h-11 items-center justify-center gap-2 rounded-lg bg-line px-4 py-2 font-bold text-[#07391c]" href={site.line.url} target="_blank" rel="noopener noreferrer"><Icon name="chat" />{site.line.label}</a>
     </nav>
   </div>
 </header>

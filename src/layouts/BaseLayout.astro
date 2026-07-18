@@ -11,8 +11,76 @@ const canonical = new URL(Astro.url.pathname, site.canonicalBase);
 const imageUrl = new URL(image, site.canonicalBase);
 const serializedStructuredData = structuredData ? JSON.stringify(structuredData).replace(/</g, '\\u003c') : undefined;
 ---
-<!doctype html><html lang="th"><head><!-- Google Tag Manager --><script is:inline>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-})(window,document,'script','dataLayer','GTM-WM9TV8N4');</script><!-- End Google Tag Manager --><meta charset="UTF-8" /><meta name="viewport" content="width=device-width" /><meta name="description" content={description} /><meta name="robots" content={noindex ? 'noindex,follow' : 'index,follow'} />{googleSiteVerification && <meta name="google-site-verification" content={googleSiteVerification} />}<link rel="canonical" href={canonical} /><meta property="og:type" content="website" /><meta property="og:locale" content="th_TH" /><meta property="og:site_name" content={site.name} /><meta property="og:title" content={title} /><meta property="og:description" content={description} /><meta property="og:url" content={canonical} /><meta property="og:image" content={imageUrl} /><meta name="twitter:card" content="summary_large_image" /><meta name="twitter:title" content={title} /><meta name="twitter:description" content={description} /><meta name="twitter:image" content={imageUrl} /><link rel="icon" href="/favicon.svg" type="image/svg+xml" />{serializedStructuredData && <script is:inline type="application/ld+json" set:html={serializedStructuredData} />}<title>{title}</title></head><body><!-- Google Tag Manager (noscript) --><noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-WM9TV8N4" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript><!-- End Google Tag Manager (noscript) --><a class="sr-only z-[100] bg-white p-3 focus:not-sr-only focus:fixed focus:left-3 focus:top-3" href="#main">ข้ามไปยังเนื้อหาหลัก</a>{chrome === 'stitch-home' ? <StitchHomeHeader /> : <Header />}<main id="main"><slot /></main>{chrome === 'stitch-home' ? <StitchHomeFooter /> : <Footer />}</body></html>
+<!doctype html>
+<html lang="th">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    {chrome === 'stitch-home' && (
+      <>
+        <link rel="preload" href="/images/home-hero-cat.webp" as="image" type="image/webp" fetchpriority="high" />
+        <link rel="stylesheet" href="/fonts/fonts.css" media="print" id="site-fonts" />
+        <script is:inline>
+          window.addEventListener('load', function(){
+            window.setTimeout(function(){
+              window.requestAnimationFrame(function(){
+                document.getElementById('site-fonts')?.setAttribute('media','all');
+              });
+            }, 1500);
+          }, {once:true});
+        </script>
+        <noscript><link rel="stylesheet" href="/fonts/fonts.css" /></noscript>
+      </>
+    )}
+    <!-- Google Tag Manager: defer initial third-party work until interaction or post-load idle time. -->
+    <script is:inline>
+      (function(w,d,s,l,i){
+        var started=false;
+        var events=['pointerdown','keydown','touchstart','scroll'];
+        function startGtm(){
+          if(started)return;
+          started=true;
+          events.forEach(function(eventName){w.removeEventListener(eventName,startGtm);});
+          w[l]=w[l]||[];
+          w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});
+          var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';
+          j.async=true;
+          j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;
+          f.parentNode.insertBefore(j,f);
+        }
+        events.forEach(function(eventName){w.addEventListener(eventName,startGtm,{passive:true});});
+        function scheduleGtm(){w.setTimeout(startGtm,6000);}
+        if(d.readyState==='complete')scheduleGtm();
+        else w.addEventListener('load',scheduleGtm,{once:true});
+      })(window,document,'script','dataLayer','GTM-WM9TV8N4');
+    </script>
+    <!-- End Google Tag Manager -->
+    <meta name="description" content={description} />
+    <meta name="robots" content={noindex ? 'noindex,follow' : 'index,follow'} />
+    {googleSiteVerification && <meta name="google-site-verification" content={googleSiteVerification} />}
+    <link rel="canonical" href={canonical} />
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="th_TH" />
+    <meta property="og:site_name" content={site.name} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:image" content={imageUrl} />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={imageUrl} />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    {serializedStructuredData && <script is:inline type="application/ld+json" set:html={serializedStructuredData} />}
+    <title>{title}</title>
+  </head>
+  <body>
+    <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-WM9TV8N4" height="0" width="0" style="display:none;visibility:hidden" title="Google Tag Manager"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
+    <a class="sr-only z-[100] bg-white p-3 focus:not-sr-only focus:fixed focus:left-3 focus:top-3" href="#main">ข้ามไปยังเนื้อหาหลัก</a>
+    {chrome === 'stitch-home' ? <StitchHomeHeader /> : <Header />}
+    <main id="main"><slot /></main>
+    {chrome === 'stitch-home' ? <StitchHomeFooter /> : <Footer />}
+  </body>
+</html>

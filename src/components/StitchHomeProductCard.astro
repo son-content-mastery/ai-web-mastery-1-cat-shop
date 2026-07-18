@@ -1,10 +1,11 @@
 ---
 import type { Product } from '../lib/catalog';
-const { product, eager = false } = Astro.props as { product: Product; eager?: boolean };
+const { product } = Astro.props as { product: Product };
+const optimizedImage = product.image.replace(/\.jpg$/, '.webp');
 ---
 <article class="card-lift flex h-full flex-col overflow-hidden rounded-xl border border-surface-highest bg-white">
   <a class="group relative block aspect-square overflow-hidden bg-surface-low" href={`/products/${product.slug}/`} aria-label={`ดูรายละเอียด ${product.name}`}>
-    <img class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-110" src={product.image} alt={product.alt} width="512" height="512" loading={eager ? 'eager' : 'lazy'} decoding="async" />
+    <img class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-110" src={optimizedImage} alt={product.alt} width="512" height="512" loading="lazy" decoding="async" />
     {product.badge && <span class:list={['absolute left-3 top-3 rounded px-2 py-1 text-[10px] font-bold uppercase tracking-wider text-white', product.badge === 'NEW' ? 'bg-success' : 'bg-primary']}>{product.badge}</span>}
   </a>
   <div class="flex flex-1 flex-col p-5">

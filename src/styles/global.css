@@ -1,5 +1,3 @@
-@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Thai:wght@400;500;600;700&family=Noto+Sans+Thai:wght@400;500;700&display=swap');
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -17,13 +15,36 @@ a { text-underline-offset: .2em; }
 .heading-section { font: 700 clamp(1.75rem, 3vw, 2.25rem)/1.3 'IBM Plex Sans Thai', sans-serif; }
 .card-lift { transition: transform .25s ease, box-shadow .25s ease; }
 .card-lift:hover { transform: translateY(-4px); box-shadow: 0 8px 16px rgba(27,27,29,.12); }
+.home-deferred-section { content-visibility: auto; contain-intrinsic-size: auto var(--home-section-size, 800px); }
+.home-category-section { --home-section-size: 960px; }
+.home-need-section { --home-section-size: 480px; }
+.home-featured-section { --home-section-size: 5200px; }
+.home-benefit-section { --home-section-size: 1200px; }
+.home-brand-section { --home-section-size: 210px; }
+.home-article-section { --home-section-size: 1150px; }
+.home-line-section { --home-section-size: 380px; }
 .line-shadow { box-shadow: 0 4px 14px rgba(6,199,85,.39); }
-.primary-action, .line-action { display: inline-flex; align-items: center; justify-content: center; gap: .5rem; border-radius: .5rem; font-weight: 700; color: white; transition: transform .2s ease, opacity .2s ease; }
-.primary-action { background: #d92d20; }
-.line-action { background: #06c755; box-shadow: 0 4px 14px rgba(6,199,85,.24); }
+.primary-action, .line-action { display: inline-flex; align-items: center; justify-content: center; gap: .5rem; border-radius: .5rem; font-weight: 700; transition: transform .2s ease, opacity .2s ease; }
+.primary-action { background: #d92d20; color: white; }
+.line-action { background: #06c755; color: #07391c; box-shadow: 0 4px 14px rgba(6,199,85,.24); }
 .primary-action:hover, .line-action:hover { transform: translateY(-2px); opacity: .92; }
 .prose-thai h2 { margin-top: 2.5rem; font: 700 1.6rem/1.35 'IBM Plex Sans Thai', sans-serif; }
 .prose-thai p, .prose-thai li { color: #5c403b; }
 .prose-thai ul { padding-left: 1.5rem; list-style: disc; }
-@media (min-width: 768px) { .container-site { width: min(100% - 3rem, 1280px); } .section-space { margin-top: 7.5rem; } }
+@media (min-width: 768px) {
+  .container-site { width: min(100% - 3rem, 1280px); }
+  .section-space { margin-top: 7.5rem; }
+  .home-category-section { --home-section-size: 600px; }
+  .home-need-section { --home-section-size: 350px; }
+  .home-featured-section { --home-section-size: 2300px; }
+  .home-benefit-section { --home-section-size: 700px; }
+  .home-article-section { --home-section-size: 700px; }
+  .home-line-section { --home-section-size: 400px; }
+}
+@media (min-width: 1024px) {
+  .home-category-section { --home-section-size: 500px; }
+  .home-featured-section { --home-section-size: 1300px; }
+  .home-benefit-section { --home-section-size: 500px; }
+  .home-article-section { --home-section-size: 550px; }
+}
 @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } *, *::before, *::after { animation-duration: .01ms !important; transition-duration: .01ms !important; } }

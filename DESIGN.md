@@ -63,6 +63,8 @@ At 375px sections stack, header navigation becomes a menu, LINE label may shorte
 
 Generated div controls became buttons/links, `data-alt` became real alt text, filters are fieldsets, breadcrumb and pagination are labeled, gallery selection uses `aria-pressed`, mobile controls expose `aria-expanded`, focus is visible, and reduced motion is honored. Body text and primary button pairings use higher-contrast token choices.
 
+Homepage LINE controls retain the mandated `#06c755` background but use dark green text/icons instead of the lower-contrast Stitch white treatment so they meet WCAG AA. Muted homepage labels also use solid semantic tokens rather than opacity where opacity would reduce contrast below AA.
+
 ## Known Implementation Differences
 
 - The listing and homepage screens were supplied; detail pages and open/empty interaction states remain inferred from their shared tokens and components.
@@ -71,6 +73,6 @@ Generated div controls became buttons/links, `data-alt` became real alt text, fi
 - The screenshot’s newsletter and unknown social links were omitted because no destination or consent flow was supplied.
 - “24-hour expert advice” and medical-risk copy from generated HTML were removed as unverified claims.
 - The implementation uses `#fcf8fb`/front-matter tokens where prose values conflict.
-- Canonical domain and LINE OA are explicit non-production placeholders.
+- Canonical domain remains a non-production placeholder; LINE OA `@781nazgq` was supplied by the site owner and is centralized in `src/config/site.ts`.
 - Homepage product names and imagery from the generated Stitch HTML are retained as explicitly labeled demo catalog records; no missing prices were invented.
 - Unverified homepage claims about expertise, authenticity, health outcomes, and delivery speed were replaced with neutral catalog and contact copy while preserving layout.
