@@ -7,7 +7,7 @@ import keystatic from '@keystatic/astro';
 const isDevelopment = process.env.NODE_ENV === 'development';
 
 export default defineConfig({
-  site: 'https://example.invalid',
+  site: 'https://ai-web-mastery-1-cat-shop.pages.dev',
   output: 'static',
   integrations: [
     tailwind({ applyBaseStyles: false }),

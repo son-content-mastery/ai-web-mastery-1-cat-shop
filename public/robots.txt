@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://example.invalid/sitemap.xml
+Sitemap: https://ai-web-mastery-1-cat-shop.pages.dev/sitemap.xml
