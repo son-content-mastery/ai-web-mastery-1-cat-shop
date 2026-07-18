@@ -1,0 +1,16 @@
+---
+import type { Product } from '../lib/catalog';
+const { product, eager = false } = Astro.props as { product: Product; eager?: boolean };
+---
+<article class="card-lift flex h-full flex-col overflow-hidden rounded-xl border border-surface-highest bg-white">
+  <a class="group relative block aspect-square overflow-hidden bg-surface-low" href={`/products/${product.slug}/`} aria-label={`ดูรายละเอียด ${product.name}`}>
+    <img class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-110" src={product.image} alt={product.alt} width="512" height="512" loading={eager ? 'eager' : 'lazy'} decoding="async" />
+    {product.badge && <span class:list={['absolute left-3 top-3 rounded px-2 py-1 text-[10px] font-bold uppercase tracking-wider text-white', product.badge === 'NEW' ? 'bg-success' : 'bg-primary']}>{product.badge}</span>}
+  </a>
+  <div class="flex flex-1 flex-col p-5">
+    <p class="text-[10px] font-bold uppercase tracking-[.16em] text-primary">{product.brand}</p>
+    <h3 class="mt-1 font-display text-lg font-semibold leading-snug text-ink"><a href={`/products/${product.slug}/`}>{product.name}</a></h3>
+    <p class="mt-2 line-clamp-2 flex-1 text-sm text-muted">{product.description}</p>
+    <a class="mt-5 flex min-h-11 items-center justify-center rounded-lg bg-primary px-4 py-2 text-sm font-bold text-white transition-opacity hover:opacity-90" href={`/products/${product.slug}/`}>ดูรายละเอียด</a>
+  </div>
+</article>

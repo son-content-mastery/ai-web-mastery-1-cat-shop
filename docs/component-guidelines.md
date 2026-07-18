@@ -1,0 +1,3 @@
+# Component guidelines
+
+Keep shared patterns in `src/components`; do not fragment one-off decoration. Product and article cards retain Stitch ratios, borders, typography, and hover. Icons are local stroke SVGs. Buttons must be native links/buttons with 44px targets and visible focus. Every product card destination is a detail route. LINE variants use only centralized configuration and green. Gallery instances initialize independently; thumbnails are buttons with pressed state. Any new component must use tokens in `tailwind.config.mjs` and be added to root `DESIGN.md` if it establishes a state not already documented.

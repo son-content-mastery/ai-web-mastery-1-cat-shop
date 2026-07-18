@@ -1,0 +1,44 @@
+---
+import Icon from './Icon.astro';
+import { site } from '../config/site';
+const links = [
+  ['/products/', 'สินค้าทั้งหมด'],
+  ['/categories/cat-food/', 'อาหารแมว'],
+  ['/categories/cat-litter/', 'ทรายแมว'],
+  ['/products/?category=cat-treats', 'ขนมแมว'],
+  ['/products/?category=cat-accessories', 'อุปกรณ์แมว'],
+  ['/blog/', 'บทความ'],
+];
+---
+<header class="sticky top-0 z-50 border-b border-surface-highest bg-surface/95 backdrop-blur" data-stitch-home-header>
+  <div class="container-site flex min-h-20 items-center justify-between gap-5">
+    <div class="flex min-w-0 items-center gap-6">
+      <a class="shrink-0 font-display text-[1.9rem] font-bold leading-none text-primary" href="/" aria-label="MaoMao Cat Shop หน้าแรก">MaoMao</a>
+      <nav class="hidden h-20 items-center gap-6 md:flex" aria-label="เมนูหลักหน้าแรก">
+        {links.map(([href, label], index) => (
+          <a class:list={['flex h-full items-center border-b-2 px-0.5 text-sm leading-snug transition-colors', index === 0 ? 'border-primary font-bold text-primary' : 'border-transparent text-muted hover:text-primary']} href={href}>{label}</a>
+        ))}
+      </nav>
+    </div>
+    <div class="flex shrink-0 items-center gap-4">
+      <a class="line-shadow hidden min-h-11 items-center gap-2 rounded-lg bg-line px-5 py-2.5 text-sm font-bold leading-tight text-white sm:flex" href={site.line.url} target="_blank" rel="noopener noreferrer"><Icon name="chat" />แอด LINE ปรึกษาเรา</a>
+      <button class="grid size-11 place-items-center rounded-lg border border-outline-soft bg-white md:hidden" type="button" data-home-menu-toggle aria-controls="stitch-home-menu" aria-expanded="false" aria-label="เปิดเมนู"><Icon name="menu" /></button>
+    </div>
+  </div>
+  <div class="hidden border-t border-surface-highest bg-white md:hidden" id="stitch-home-menu" data-home-menu>
+    <nav class="container-site grid gap-1 py-4" aria-label="เมนูมือถือหน้าแรก">
+      {links.map(([href, label]) => <a class="min-h-11 rounded-lg px-3 py-2 text-muted hover:bg-surface-low hover:text-primary" href={href}>{label}</a>)}
+      <a class="mt-2 flex min-h-11 items-center justify-center gap-2 rounded-lg bg-line px-4 py-2 font-bold text-white" href={site.line.url} target="_blank" rel="noopener noreferrer"><Icon name="chat" />{site.line.label}</a>
+    </nav>
+  </div>
+</header>
+<script>
+  const homeMenuButton = document.querySelector<HTMLButtonElement>('[data-home-menu-toggle]');
+  const homeMenu = document.querySelector<HTMLElement>('[data-home-menu]');
+  homeMenuButton?.addEventListener('click', () => {
+    const open = homeMenuButton.getAttribute('aria-expanded') === 'true';
+    homeMenuButton.setAttribute('aria-expanded', String(!open));
+    homeMenuButton.setAttribute('aria-label', open ? 'เปิดเมนู' : 'ปิดเมนู');
+    homeMenu?.classList.toggle('hidden', open);
+  });
+</script>

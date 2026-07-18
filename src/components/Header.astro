@@ -1,0 +1,37 @@
+---
+import Icon from './Icon.astro';
+import { site } from '../config/site';
+const path = Astro.url.pathname;
+const links = [
+  ['/products/', 'สินค้าทั้งหมด'], ['/categories/cat-food/', 'อาหารแมว'], ['/categories/cat-litter/', 'ทรายแมว'],
+  ['/brands/royal-canin/', 'Royal Canin'], ['/brands/maxima/', 'Maxima'], ['/blog/', 'บทความ']
+];
+---
+<header class="sticky top-0 z-50 border-b border-surface-highest bg-surface/95 backdrop-blur">
+  <div class="container-site flex min-h-20 items-center justify-between gap-4">
+    <a class="font-display text-2xl font-bold leading-tight text-primary md:text-[1.7rem]" href="/" aria-label="MaoMao Cat Shop หน้าแรก">MaoMao<br class="sm:hidden" /> Cat Shop</a>
+    <nav class="hidden h-20 items-center gap-6 lg:flex" aria-label="เมนูหลัก">
+      {links.map(([href, label]) => <a class:list={['flex h-full items-center border-b-2 text-sm transition-colors', path.startsWith(href) ? 'border-primary font-bold text-primary' : 'border-transparent text-muted hover:text-primary']} href={href}>{label}</a>)}
+    </nav>
+    <div class="flex items-center gap-3">
+      <a class="line-shadow hidden min-h-11 items-center gap-2 rounded-lg bg-line px-4 py-2 text-sm font-bold text-white sm:flex" href={site.line.url} target="_blank" rel="noopener noreferrer"><Icon name="chat" />{site.line.label}</a>
+      <button class="grid size-11 place-items-center rounded-lg border border-outline-soft bg-white lg:hidden" type="button" data-menu-toggle aria-controls="mobile-menu" aria-expanded="false" aria-label="เปิดเมนู"><Icon name="menu" /></button>
+    </div>
+  </div>
+  <div class="hidden border-t border-surface-highest bg-white lg:hidden" id="mobile-menu" data-mobile-menu>
+    <nav class="container-site grid gap-1 py-4" aria-label="เมนูมือถือ">
+      {links.map(([href, label]) => <a class="min-h-11 rounded-lg px-3 py-2 text-muted hover:bg-surface-low hover:text-primary" href={href}>{label}</a>)}
+      <a class="mt-2 flex min-h-11 items-center justify-center gap-2 rounded-lg bg-line px-4 py-2 font-bold text-white" href={site.line.url} target="_blank" rel="noopener noreferrer"><Icon name="chat" />{site.line.label}</a>
+    </nav>
+  </div>
+</header>
+<script>
+  const button = document.querySelector<HTMLButtonElement>('[data-menu-toggle]');
+  const menu = document.querySelector<HTMLElement>('[data-mobile-menu]');
+  button?.addEventListener('click', () => {
+    const open = button.getAttribute('aria-expanded') === 'true';
+    button.setAttribute('aria-expanded', String(!open));
+    button.setAttribute('aria-label', open ? 'เปิดเมนู' : 'ปิดเมนู');
+    menu?.classList.toggle('hidden', open);
+  });
+</script>

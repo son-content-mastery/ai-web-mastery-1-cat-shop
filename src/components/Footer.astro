@@ -1,0 +1,14 @@
+---
+import Icon from './Icon.astro';
+import { site } from '../config/site';
+---
+<footer class="mt-20 border-t border-surface-highest bg-white pt-16">
+  <div class="container-site grid grid-cols-2 gap-8 pb-16 md:grid-cols-4">
+    <div class="col-span-2 md:col-span-1"><p class="font-display text-3xl font-bold text-primary">MaoMao</p><p class="mt-5 max-w-xs text-sm text-muted">พรีเมียมช็อปสำหรับแมวที่คุณรัก รวบรวมอาหาร ทรายแมว และอุปกรณ์ดูแลในรูปแบบแคตตาล็อก พร้อมคำแนะนำผ่าน LINE</p></div>
+    <div><h2 class="font-bold">สินค้าแนะนำ</h2><ul class="mt-5 space-y-3 text-sm text-muted"><li><a href="/categories/cat-food/">อาหารแมว</a></li><li><a href="/categories/cat-litter/">ทรายแมว</a></li><li><a href="/brands/royal-canin/">Royal Canin</a></li><li><a href="/brands/maxima/">Maxima</a></li></ul></div>
+    <div><h2 class="font-bold">บริการลูกค้า</h2><ul class="mt-5 space-y-3 text-sm text-muted"><li><a href="/about/">เกี่ยวกับเรา</a></li><li><a href="/contact/">ติดต่อเรา</a></li><li><a href="/purchasing/">วิธีสั่งซื้อ</a></li><li><a href="/privacy/">ความเป็นส่วนตัว</a></li></ul></div>
+    <div><h2 class="font-bold">ติดต่อเรา</h2><a class="mt-5 inline-flex min-h-11 items-center gap-2 rounded-lg bg-line px-4 py-2 font-bold text-white" href={site.line.url} target="_blank" rel="noopener noreferrer"><Icon name="chat" />LINE {site.line.id}</a><p class="mt-4 text-xs text-muted">ข้อมูลบัญชี LINE เป็น placeholder และต้องยืนยันก่อนเผยแพร่</p></div>
+  </div>
+  <div class="border-t border-surface-highest"><div class="container-site flex flex-col gap-3 py-6 text-xs text-muted sm:flex-row sm:justify-between"><p>© 2026 MaoMao Cat Shop</p><div class="flex gap-5"><a href="/privacy/">นโยบายความเป็นส่วนตัว</a><a href="/purchasing/">วิธีสั่งซื้อ</a></div></div></div>
+</footer>
+<a class="line-shadow fixed bottom-5 right-5 z-40 flex min-h-12 items-center gap-2 rounded-full bg-line px-4 py-3 font-bold text-white" href={site.line.url} target="_blank" rel="noopener noreferrer" aria-label="ปรึกษาร้านผ่าน LINE"><Icon name="chat" /><span class="hidden sm:inline">ปรึกษาเราทาง LINE</span></a>

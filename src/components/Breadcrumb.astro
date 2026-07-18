@@ -1,0 +1,6 @@
+---
+import Icon from './Icon.astro';
+interface Item { label: string; href?: string; }
+const { items } = Astro.props as { items: Item[] };
+---
+<nav aria-label="เส้นทางหน้า" class="mb-6 text-sm text-muted"><ol class="flex flex-wrap items-center gap-2"><li><a class="hover:text-primary" href="/">หน้าแรก</a></li>{items.map((item) => <><li aria-hidden="true"><Icon name="chevron-right" class="size-4" /></li><li>{item.href ? <a class="hover:text-primary" href={item.href}>{item.label}</a> : <span class="font-bold text-ink" aria-current="page">{item.label}</span>}</li></>)}</ol></nav>

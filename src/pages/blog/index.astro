@@ -1,0 +1,5 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro'; import Breadcrumb from '../../components/Breadcrumb.astro'; import ArticleCard from '../../components/ArticleCard.astro'; import { getArticles } from '../../lib/catalog';
+const articles = await getArticles();
+---
+<BaseLayout title="บทความเรื่องอาหารแมวและการดูแลแมว | MaoMao" description="บทความช่วยเลือกอาหารแมว ทรายแมว และดูแลสภาพแวดล้อมให้เหมาะกับแมว"><div class="container-site py-10"><Breadcrumb items={[{label:'บทความ'}]} /><header class="max-w-3xl"><h1 class="heading-section">บทความน่ารู้สำหรับทาสแมว</h1><p class="mt-4 text-muted">ข้อมูลเบื้องต้นเพื่อช่วยพิจารณาสินค้า อ่านฉลาก และเตรียมคำถามก่อนปรึกษาร้าน</p></header><div class="mt-10 grid gap-x-6 gap-y-12 md:grid-cols-3">{articles.map(article=><ArticleCard article={article}/>)}</div></div></BaseLayout>

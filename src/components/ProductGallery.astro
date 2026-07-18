@@ -1,0 +1,31 @@
+---
+import Icon from './Icon.astro';
+const { images, productName } = Astro.props as { images: { src: string; alt: string }[]; productName: string };
+---
+<div class="grid gap-3 md:grid-cols-[80px_1fr]" data-gallery>
+  <div class="order-2 flex gap-3 overflow-x-auto md:order-1 md:flex-col" role="list" aria-label={`รูปภาพ ${productName}`}>
+    {images.map((image, index) => <button class:list={['shrink-0 overflow-hidden rounded-lg border-2 bg-white', index === 0 ? 'border-primary' : 'border-transparent']} type="button" data-thumb data-src={image.src} data-alt={image.alt} aria-label={`แสดงรูปที่ ${index + 1}: ${image.alt}`} aria-pressed={index === 0 ? 'true' : 'false'}><img class="size-20 object-cover" src={image.src} alt="" width="80" height="80" loading={index ? 'lazy' : 'eager'} /></button>)}
+  </div>
+  <div class="relative order-1 aspect-square overflow-hidden rounded-xl border border-surface-highest bg-white md:order-2">
+    <img class="h-full w-full object-cover" data-main-image src={images[0].src} alt={images[0].alt} width="640" height="640" fetchpriority="high" />
+    {images.length > 1 && <div class="absolute inset-x-3 top-1/2 flex -translate-y-1/2 justify-between"><button class="grid size-11 place-items-center rounded-full border border-outline-soft bg-white/95" type="button" data-prev aria-label="รูปก่อนหน้า"><Icon name="chevron-left" /></button><button class="grid size-11 place-items-center rounded-full border border-outline-soft bg-white/95" type="button" data-next aria-label="รูปถัดไป"><Icon name="chevron-right" /></button></div>}
+  </div>
+</div>
+<script>
+  document.querySelectorAll<HTMLElement>('[data-gallery]').forEach((gallery) => {
+    const main = gallery.querySelector<HTMLImageElement>('[data-main-image]');
+    const thumbs = [...gallery.querySelectorAll<HTMLButtonElement>('[data-thumb]')];
+    let current = 0;
+    const select = (index: number) => {
+      current = (index + thumbs.length) % thumbs.length;
+      const thumb = thumbs[current];
+      if (!main || !thumb) return;
+      main.src = thumb.dataset.src ?? '';
+      main.alt = thumb.dataset.alt ?? '';
+      thumbs.forEach((button, i) => { button.setAttribute('aria-pressed', String(i === current)); button.classList.toggle('border-primary', i === current); button.classList.toggle('border-transparent', i !== current); });
+    };
+    thumbs.forEach((thumb, index) => thumb.addEventListener('click', () => select(index)));
+    gallery.querySelector('[data-prev]')?.addEventListener('click', () => select(current - 1));
+    gallery.querySelector('[data-next]')?.addEventListener('click', () => select(current + 1));
+  });
+</script>

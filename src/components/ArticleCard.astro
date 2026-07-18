@@ -1,0 +1,4 @@
+---
+const { article } = Astro.props;
+---
+<article><a class="group block" href={`/blog/${article.slug}/`}><div class="aspect-video overflow-hidden rounded-xl border border-surface-highest"><img class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105" src={article.image} alt={article.alt} width="512" height="286" loading="lazy" /></div><h2 class="mt-4 font-display text-xl font-medium leading-snug group-hover:text-primary">{article.title}</h2><p class="mt-2 text-sm text-muted">{article.date}</p></a></article>

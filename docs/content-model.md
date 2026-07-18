@@ -1,0 +1,5 @@
+# Content model
+
+`Product` contains slug, name, brand, category, short description, display price, optional comparison price, image, alt, optional badge, an optional homepage-featured marker, product code, display order, and a rich-text details body. It does not contain stock, quantity, rating, reviews, or checkout data. Articles contain slug, title, excerpt, image/alt, ISO publication date, and a rich-text body. The Thai display date and RSS publication date are derived from the ISO value.
+
+Products and articles are Markdown content collections under `src/content/products/` and `src/content/blog/`. `keystatic.config.ts` is the authoring schema and `src/content/config.ts` is the Astro validation schema; keep their fields aligned. Current records are demo data transcribed or conservatively derived from Stitch; packaging facts and prices require verification. Homepage records whose source did not provide prices display “สอบถามราคา” rather than an invented amount. Site identity, canonical base, and LINE data are centralized in `src/config/site.ts`.

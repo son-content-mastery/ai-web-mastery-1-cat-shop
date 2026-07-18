@@ -1,0 +1,3 @@
+# Page specifications
+
+The product listing is the literal Stitch reference: title/intro, responsive filter sidebar, sort/result row, three-card grid, pagination, supporting copy, articles, footer, and floating LINE CTA. Homepage reuses its header, cards, spacing, and editorial imagery. Category/brand pages use the same intro and product grid. Product detail adds the inferred square gallery, product code, price, LINE primary action, factual demo disclosure, and related products. Blog uses Stitch article cards and a narrow reading column. Informational pages use bordered white blocks and the same hierarchy. The 404 provides routes back to homepage and catalog.
